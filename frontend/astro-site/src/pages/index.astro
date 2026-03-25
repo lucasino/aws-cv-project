@@ -1,15 +1,340 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import Layout from '../layouts/Layout.astro';
+
+const experience = [
+  {
+    company: 'Scalian',
+    role: 'Software Developer',
+    location: 'Madrid, Spain',
+    period: '2024 – Present',
+    description: 'Develop software tests using Google Test to ensure quality and reliability of software solutions for BSH Group. Implement effective testing strategies in C++ and contribute to integration test automation.',
+    tags: ['C++', 'Google Test', 'BSH Group', 'Integration Testing'],
+    accent: 'accent',
+  },
+  {
+    company: 'Al Kamel Systems',
+    role: 'C++ / Qt Developer',
+    location: 'Barcelona, Spain',
+    period: '2023 – 2024',
+    description: 'Developed real-time monitoring applications for Motorsport competitions. Built graphical interfaces for race tracking and a video-based off-track detection system using camera footage.',
+    tags: ['C++', 'Qt', 'Real-time', 'Motorsport', 'GUI'],
+    accent: 'teal',
+  },
+  {
+    company: 'Motor & Sport Institute',
+    role: 'Simulation Manager & Game Dev Director',
+    location: 'Madrid, Spain',
+    period: '2019 – 2023',
+    description: 'Led development of 15+ professional driving simulators. Directed production of two commercial video games: Poky Drivers (mobile) and Universe Galactic Racing (online multiplayer).',
+    tags: ['C++', 'Simulation', 'Game Dev', 'Team Lead', 'Unity'],
+    accent: 'accent',
+  },
+  {
+    company: 'Universidad Francisco de Vitoria',
+    role: 'Videogame Laboratory Manager',
+    location: 'Madrid, Spain',
+    period: '2016 – 2019',
+    description: 'Technical support in videogame development classrooms. Assisted faculty and students, integrating new educational technologies in development environments.',
+    tags: ['Technical Support', 'Education', 'Game Dev'],
+    accent: 'teal',
+  },
+];
+
+const skills = {
+  'Languages': ['C++', 'C#', 'Java', 'Python', 'PHP'],
+  'Databases':  ['SQL', 'PL/SQL'],
+  'Frameworks': ['Qt', 'React', 'Node.js', 'Google Test'],
+  'Cloud / AWS': ['S3', 'CloudFront', 'Lambda', 'Route53', 'CDK', 'IAM', 'CloudWatch'],
+  'Tools':       ['Git', 'SNMP', 'Photoshop', 'After Effects'],
+};
 ---
 
-<MainLayout title="Home">
+<Layout title="Lucas Calbó — Software Developer">
 
-<h1>Lucas Calbó</h1>
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="min-h-screen flex items-center relative overflow-hidden pt-16">
 
-<p>
-Software Engineer  
-AWS Solutions Architect Student  
-Backend / C++ / Cloud
-</p>
+    <!-- Background accent glow -->
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-teal/5 rounded-full blur-3xl pointer-events-none"></div>
 
-</MainLayout>
+    <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Text side -->
+      <div class="order-2 lg:order-1">
+        <div class="section-label mb-6 animate-fade-up" style="animation-delay: 0.1s; opacity: 0;">
+          ▸ Software Developer
+        </div>
+
+        <h1 class="font-display leading-none mb-6 animate-fade-up" style="animation-delay: 0.2s; opacity: 0;">
+          <span class="block text-7xl md:text-8xl text-text">LUCAS</span>
+          <span class="block text-7xl md:text-8xl text-accent">CALBÓ</span>
+        </h1>
+
+        <p class="text-muted font-body text-base leading-relaxed max-w-md mb-8 animate-fade-up"
+           style="animation-delay: 0.3s; opacity: 0;">
+          C++ specialist from <span class="text-text">Motorsport</span> &
+          <span class="text-text">Game Dev</span> industries.
+          Now building cloud-native architectures on <span class="text-teal">AWS</span>.
+          Based in <span class="text-text">Madrid, Spain</span>.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10 animate-fade-up" style="animation-delay: 0.4s; opacity: 0;">
+          <a href="#experience" class="btn-primary">View Experience</a>
+          <a href="mailto:lucascalbo@gmail.com" class="btn-ghost">Get in touch</a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="flex gap-8 animate-fade-up" style="animation-delay: 0.5s; opacity: 0;">
+          {[
+            { value: '9+', label: 'Years exp.' },
+            { value: '15+', label: 'Simulators' },
+            { value: '2',   label: 'Games shipped' },
+          ].map(stat => (
+            <div>
+              <div class="font-display text-3xl text-accent">{stat.value}</div>
+              <div class="font-mono text-xs text-muted uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Photo side -->
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-up"
+           style="animation-delay: 0.2s; opacity: 0;">
+        <div class="relative">
+          <!-- Decorative frame -->
+          <div class="absolute -inset-3 border border-accent/20 rounded-2xl"></div>
+          <div class="absolute -inset-6 border border-teal/10 rounded-3xl"></div>
+
+          <!-- Photo placeholder — replace src with your actual photo -->
+          <div class="w-64 h-80 md:w-80 md:h-96 rounded-xl overflow-hidden bg-panel border border-border relative">
+            <img
+              src="/photo.jpg"
+              alt="Lucas Calbó"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <!-- Fallback if no photo yet -->
+            <div class="absolute inset-0 hidden items-center justify-center flex-col gap-2">
+              <span class="font-display text-6xl text-accent">LC</span>
+              <span class="font-mono text-xs text-muted">photo.jpg</span>
+            </div>
+
+            <!-- Overlay gradient -->
+            <div class="absolute bottom-0 left-0 right-0 h-1/3
+                        bg-gradient-to-t from-bg/80 to-transparent"></div>
+
+            <!-- Status badge -->
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="bg-surface/90 backdrop-blur border border-border rounded-lg px-3 py-2
+                          flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-teal animate-pulse"></div>
+                <span class="font-mono text-xs text-muted">Available for opportunities</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Corner accent -->
+          <div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-accent"></div>
+          <div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-teal"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="font-mono text-xs text-muted/50 uppercase tracking-widest">scroll</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-muted/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       EXPERIENCE
+  ══════════════════════════════════════════ -->
+  <section id="experience" class="py-32 max-w-6xl mx-auto px-6">
+    <div class="mb-16">
+      <div class="section-label mb-4">02 / Experience</div>
+      <h2 class="section-title">WORK<br/><span class="text-accent">HISTORY</span></h2>
+      <div class="accent-line mt-6 max-w-xs"></div>
+    </div>
+
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-0 top-0 bottom-0 w-px bg-border hidden md:block ml-6"></div>
+
+      <div class="space-y-8">
+        {experience.map((job, i) => (
+          <div class="relative md:pl-20 group">
+
+            <!-- Timeline dot -->
+            <div class={`hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full
+                         border-2 items-center justify-center z-10
+                         bg-panel transition-colors duration-300
+                         ${job.accent === 'accent' ? 'border-accent/50 group-hover:border-accent' : 'border-teal/50 group-hover:border-teal'}`}>
+              <span class={`font-display text-lg ${job.accent === 'accent' ? 'text-accent' : 'text-teal'}`}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+
+            <div class="card group-hover:bg-surface/50">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                <div>
+                  <h3 class="font-display text-2xl text-text">{job.company}</h3>
+                  <p class={`font-mono text-sm ${job.accent === 'accent' ? 'text-accent' : 'text-teal'}`}>
+                    {job.role}
+                  </p>
+                </div>
+                <div class="text-right shrink-0">
+                  <div class="font-mono text-xs text-muted">{job.period}</div>
+                  <div class="font-mono text-xs text-muted/60">{job.location}</div>
+                </div>
+              </div>
+
+              <p class="text-muted text-sm leading-relaxed mb-4">{job.description}</p>
+
+              <div class="flex flex-wrap gap-2">
+                {job.tags.map(tag => <span class="tag">{tag}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SKILLS
+  ══════════════════════════════════════════ -->
+  <section id="skills" class="py-32 bg-surface/30 border-y border-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <div class="section-label mb-4">03 / Skills</div>
+        <h2 class="section-title">TECH<br/><span class="text-accent">STACK</span></h2>
+        <div class="accent-line mt-6 max-w-xs"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Object.entries(skills).map(([category, items]) => (
+          <div class="card">
+            <div class="font-mono text-xs text-accent uppercase tracking-widest mb-4">
+              {category}
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {items.map(skill => (
+                <span class="font-mono text-sm px-3 py-1.5 rounded bg-bg border border-border
+                             text-text hover:border-accent/50 hover:text-accent
+                             transition-colors duration-200 cursor-default">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       AWS ARCHITECTURE (bonus section)
+  ══════════════════════════════════════════ -->
+  <section class="py-32 max-w-6xl mx-auto px-6">
+    <div class="mb-16">
+      <div class="section-label mb-4">04 / AWS Architecture</div>
+      <h2 class="section-title">THIS SITE<br/><span class="text-teal">ON AWS</span></h2>
+      <div class="accent-line mt-6 max-w-xs"></div>
+    </div>
+
+    <div class="card">
+      <p class="text-muted text-sm mb-6">
+        This portfolio is deployed on AWS as a hands-on demonstration of cloud architecture.
+        Studying for the <span class="text-teal">AWS Certified Solutions Architect – Associate (SAA-C03)</span>.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          { service: 'Route 53',   desc: 'DNS & Domain',        icon: '🌐', color: 'accent' },
+          { service: 'CloudFront', desc: 'CDN & Edge Delivery', icon: '⚡', color: 'teal'   },
+          { service: 'S3',         desc: 'Static Site Hosting', icon: '🪣', color: 'accent' },
+          { service: 'Lambda',     desc: 'CV PDF Generation',   icon: 'λ',  color: 'teal'   },
+          { service: 'API Gateway',desc: 'REST Endpoints',      icon: '🔀', color: 'accent' },
+          { service: 'IAM',        desc: 'Permissions & Roles', icon: '🔐', color: 'teal'   },
+          { service: 'CloudWatch', desc: 'Monitoring & Logs',   icon: '📊', color: 'accent' },
+          { service: 'CDK',        desc: 'Infrastructure as Code', icon: '⚙️', color: 'teal' },
+        ].map(item => (
+          <div class={`p-4 rounded-lg bg-bg border transition-colors duration-200 cursor-default
+                       ${item.color === 'accent' ? 'border-accent/20 hover:border-accent/50' : 'border-teal/20 hover:border-teal/50'}`}>
+            <div class="text-2xl mb-2">{item.icon}</div>
+            <div class={`font-mono text-xs font-medium mb-1 ${item.color === 'accent' ? 'text-accent' : 'text-teal'}`}>
+              {item.service}
+            </div>
+            <div class="font-body text-xs text-muted">{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       EDUCATION
+  ══════════════════════════════════════════ -->
+  <section class="py-32 bg-surface/30 border-y border-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <div class="section-label mb-4">05 / Education</div>
+        <h2 class="section-title">FORMA<br/><span class="text-accent">CIÓN</span></h2>
+        <div class="accent-line mt-6 max-w-xs"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          {
+            institution: 'Universidad Francisco de Vitoria',
+            degree: "Bachelor's Degree in Videogame Development",
+            period: '2015 – 2019',
+          },
+          {
+            institution: 'María de Zayas',
+            degree: 'Technical Degree in Applications Development',
+            period: '2010 – 2012',
+          },
+        ].map(edu => (
+          <div class="card">
+            <div class="font-mono text-xs text-accent mb-2">{edu.period}</div>
+            <h3 class="font-display text-xl text-text mb-1">{edu.institution}</h3>
+            <p class="text-muted text-sm">{edu.degree}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CONTACT CTA
+  ══════════════════════════════════════════ -->
+  <section class="py-32 max-w-6xl mx-auto px-6 text-center">
+    <div class="section-label mb-6 flex justify-center">06 / Contact</div>
+    <h2 class="font-display text-6xl md:text-8xl text-text mb-4">
+      LET'S <span class="text-accent">TALK</span>
+    </h2>
+    <p class="text-muted font-body max-w-md mx-auto mb-10 text-sm leading-relaxed">
+      Open to new opportunities, collaborations, and interesting engineering challenges.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="mailto:lucascalbo@gmail.com" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        lucascalbo@gmail.com
+      </a>
+      <a href="tel:+34655587466" class="btn-ghost">
+        +34 655 58 74 66
+      </a>
+    </div>
+  </section>
+
+</Layout>

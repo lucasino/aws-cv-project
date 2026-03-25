@@ -1,15 +1,98 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<MainLayout title="CV">
+<Layout title="CV — Lucas Calbó" description="Download Lucas Calbó's CV as PDF">
+  <section class="min-h-screen pt-32 pb-20 max-w-4xl mx-auto px-6">
+    <div class="mb-12">
+      <div class="section-label mb-4">↗ Curriculum Vitae</div>
+      <h1 class="section-title mb-4">
+        DOWN<br /><span class="text-accent">LOAD CV</span>
+      </h1>
+      <div class="accent-line max-w-xs mb-8"></div>
+      <p class="text-muted text-sm font-body max-w-md leading-relaxed">
+        Download my full CV as a PDF. Last updated January 2025.
+      </p>
+    </div>
 
-<h1>Curriculum</h1>
+    <!-- Download card -->
+    <div
+      class="card mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+    >
+      <div class="flex items-center gap-4">
+        <div
+          class="w-12 h-12 rounded-lg bg-accent/10 border border-accent/30
+                    flex items-center justify-center shrink-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 text-accent"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <div class="font-display text-xl text-text">Lucas_Calbo_CV.pdf</div>
+          <div class="font-mono text-xs text-muted">
+            PDF · ~120 KB · English
+          </div>
+        </div>
+      </div>
 
-<p>Software Engineer with experience in C++ and AWS.</p>
+      <!-- This link will point to the PDF stored in S3 via CloudFront -->
+      <a
+        href="/cv/Lucas_Calbo_CV.pdf"
+        download
+        class="btn-primary shrink-0"
+        id="download-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+          ></path>
+        </svg>
+        Download PDF
+      </a>
+    </div>
 
-<button>
-Download CV
-</button>
+    <!-- Preview of content -->
+    <div class="space-y-6">
+      <div class="section-label">What's inside</div>
 
-</MainLayout>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {
+          [
+            "Professional profile & summary",
+            "9+ years of work experience",
+            "Technical skills breakdown",
+            "Education & degrees",
+            "Game & simulation projects",
+            "Contact information",
+          ].map((item) => (
+            <div class="flex items-center gap-3 text-sm text-muted font-body">
+              <span class="text-accent font-mono">✓</span>
+              {item}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

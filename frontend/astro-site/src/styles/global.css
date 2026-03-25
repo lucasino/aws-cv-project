@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --color-bg: #0B0C10;
+  --color-surface: #13151A;
+  --color-panel: #1C1E25;
+  --color-border: #2A2D38;
+  --color-accent: #FF6B35;
+  --color-teal: #4ECDC4;
+  --color-text: #E2E8F0;
+  --color-muted: #64748B;
+
+  --font-display: "Bebas Neue", cursive;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body: "DM Sans", sans-serif;
+
+  --animate-fade-up: fadeUp 0.6s ease forwards;
+  --animate-line-grow: lineGrow 1s ease forwards;
+
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes lineGrow {
+    0% {
+      width: 0%;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0B0C10;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  ::selection {
+    background: rgba(255, 107, 53, 0.3);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-accent);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-text);
+    line-height: 1;
+  }
+
+  .card {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .card:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #fb923c;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-ghost:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
+    color: var(--color-accent);
+  }
+
+  .accent-line {
+    height: 1px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-teal), transparent);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF6B35;
+  border-radius: 2px;
+}
