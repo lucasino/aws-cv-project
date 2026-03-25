@@ -3,232 +3,344 @@ import Layout from '../layouts/Layout.astro';
 
 const experience = [
   {
-    company: 'Scalian',
-    role: 'Software Developer',
-    location: 'Madrid, Spain',
-    period: '2024 – Present',
-    description: 'Develop software tests using Google Test to ensure quality and reliability of software solutions for BSH Group. Implement effective testing strategies in C++ and contribute to integration test automation.',
-    tags: ['C++', 'Google Test', 'BSH Group', 'Integration Testing'],
-    accent: 'accent',
+    company:     'Scalian / BSH Group',
+    role:        'Software Developer',
+    location:    'Madrid, Spain',
+    period:      '2024 – Present',
+    description: 'Develop and maintain integration test suites in C++ using Google Test for BSH Group embedded systems. Collaborate closely with client engineering teams to define testing strategies and ensure software reliability at scale.',
+    tags:        ['C++', 'Google Test', 'Integration Testing', 'Embedded Systems'],
   },
   {
-    company: 'Al Kamel Systems',
-    role: 'C++ / Qt Developer',
-    location: 'Barcelona, Spain',
-    period: '2023 – 2024',
-    description: 'Developed real-time monitoring applications for Motorsport competitions. Built graphical interfaces for race tracking and a video-based off-track detection system using camera footage.',
-    tags: ['C++', 'Qt', 'Real-time', 'Motorsport', 'GUI'],
-    accent: 'teal',
+    company:     'Al Kamel Systems',
+    role:        'C++ / Qt Developer',
+    location:    'Barcelona, Spain',
+    period:      '2023 – 2024',
+    description: 'Built real-time data acquisition and monitoring applications for professional motorsport competitions. Designed graphical interfaces for live race telemetry and developed a computer-vision off-track detection system.',
+    tags:        ['C++', 'Qt', 'Real-time Systems', 'Computer Vision', 'GUI'],
   },
   {
-    company: 'Motor & Sport Institute',
-    role: 'Simulation Manager & Game Dev Director',
-    location: 'Madrid, Spain',
-    period: '2019 – 2023',
-    description: 'Led development of 15+ professional driving simulators. Directed production of two commercial video games: Poky Drivers (mobile) and Universe Galactic Racing (online multiplayer).',
-    tags: ['C++', 'Simulation', 'Game Dev', 'Team Lead', 'Unity'],
-    accent: 'accent',
+    company:     'Motor & Sport Institute',
+    role:        'Simulation Manager & Game Dev Director',
+    location:    'Madrid, Spain',
+    period:      '2019 – 2023',
+    description: 'Led end-to-end development of 15+ professional driving simulators for Formula, GT, and Rally categories. Directed production of two commercial software titles from concept to release, managing cross-functional teams.',
+    tags:        ['C++', 'Simulation', 'Team Leadership', 'Game Development', 'Unity'],
   },
   {
-    company: 'Universidad Francisco de Vitoria',
-    role: 'Videogame Laboratory Manager',
-    location: 'Madrid, Spain',
-    period: '2016 – 2019',
-    description: 'Technical support in videogame development classrooms. Assisted faculty and students, integrating new educational technologies in development environments.',
-    tags: ['Technical Support', 'Education', 'Game Dev'],
-    accent: 'teal',
+    company:     'Universidad Francisco de Vitoria',
+    role:        'Videogame Laboratory Manager',
+    location:    'Madrid, Spain',
+    period:      '2016 – 2019',
+    description: 'Managed technical infrastructure for game development labs serving faculty and students. Integrated and maintained development environments and toolchains across multiple platforms.',
+    tags:        ['Technical Support', 'Lab Management', 'Education'],
   },
 ];
 
-const skills = {
-  'Languages': ['C++', 'C#', 'Java', 'Python', 'PHP'],
-  'Databases':  ['SQL', 'PL/SQL'],
-  'Frameworks': ['Qt', 'React', 'Node.js', 'Google Test'],
-  'Cloud / AWS': ['S3', 'CloudFront', 'Lambda', 'Route53', 'CDK', 'IAM', 'CloudWatch'],
-  'Tools':       ['Git', 'SNMP', 'Photoshop', 'After Effects'],
-};
+const skillGroups = [
+  { label: 'Core Languages',    items: ['C++', 'C#', 'Java', 'Python', 'PHP'] },
+  { label: 'Databases',         items: ['SQL', 'PL/SQL'] },
+  { label: 'Frameworks & Libs', items: ['Qt', 'Google Test', 'React', 'Node.js'] },
+  { label: 'Cloud — AWS',       items: ['S3', 'CloudFront', 'Lambda', 'API Gateway', 'Route 53', 'IAM', 'CloudWatch', 'CDK'] },
+  { label: 'Tools & Other',     items: ['Git', 'SNMP', 'Photoshop', 'After Effects'] },
+];
+
+const awsServices = [
+  { name: 'Route 53',    role: 'DNS & domain routing',          color: '#FF9900' },
+  { name: 'CloudFront',  role: 'Global CDN & edge delivery',    color: '#FF9900' },
+  { name: 'S3',          role: 'Static site & asset storage',   color: '#3F8624' },
+  { name: 'API Gateway', role: 'REST endpoint management',      color: '#A020F0' },
+  { name: 'Lambda',      role: 'Serverless compute (PDF gen)',  color: '#FF9900' },
+  { name: 'IAM',         role: 'Permissions & access control',  color: '#DD344C' },
+  { name: 'CloudWatch',  role: 'Monitoring, logs & alerts',     color: '#E7157B' },
+  { name: 'CDK',         role: 'Infrastructure as Code',        color: '#0055FF' },
+];
 ---
 
-<Layout title="Lucas Calbó — Software Developer">
+<Layout>
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════
        HERO
-  ══════════════════════════════════════════ -->
-  <section class="min-h-screen flex items-center relative overflow-hidden pt-16">
+  ══════════════════════════════════════ -->
+  <section style="
+    min-height: calc(100vh - 3.5rem);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+  ">
+    <div class="max-w-6xl mx-auto px-8 w-full">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;"
+           class="grid-cols-1 md:grid-cols-2">
 
-    <!-- Background accent glow -->
-    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-teal/5 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Left: Text -->
+        <div style="animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.1s;">
 
-    <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-      <!-- Text side -->
-      <div class="order-2 lg:order-1">
-        <div class="section-label mb-6 animate-fade-up" style="animation-delay: 0.1s; opacity: 0;">
-          ▸ Software Developer
-        </div>
-
-        <h1 class="font-display leading-none mb-6 animate-fade-up" style="animation-delay: 0.2s; opacity: 0;">
-          <span class="block text-7xl md:text-8xl text-text">LUCAS</span>
-          <span class="block text-7xl md:text-8xl text-accent">CALBÓ</span>
-        </h1>
-
-        <p class="text-muted font-body text-base leading-relaxed max-w-md mb-8 animate-fade-up"
-           style="animation-delay: 0.3s; opacity: 0;">
-          C++ specialist from <span class="text-text">Motorsport</span> &
-          <span class="text-text">Game Dev</span> industries.
-          Now building cloud-native architectures on <span class="text-teal">AWS</span>.
-          Based in <span class="text-text">Madrid, Spain</span>.
-        </p>
-
-        <div class="flex flex-wrap gap-3 mb-10 animate-fade-up" style="animation-delay: 0.4s; opacity: 0;">
-          <a href="#experience" class="btn-primary">View Experience</a>
-          <a href="mailto:lucascalbo@gmail.com" class="btn-ghost">Get in touch</a>
-        </div>
-
-        <!-- Quick stats -->
-        <div class="flex gap-8 animate-fade-up" style="animation-delay: 0.5s; opacity: 0;">
-          {[
-            { value: '9+', label: 'Years exp.' },
-            { value: '15+', label: 'Simulators' },
-            { value: '2',   label: 'Games shipped' },
-          ].map(stat => (
-            <div>
-              <div class="font-display text-3xl text-accent">{stat.value}</div>
-              <div class="font-mono text-xs text-muted uppercase tracking-wider">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Photo side -->
-      <div class="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-up"
-           style="animation-delay: 0.2s; opacity: 0;">
-        <div class="relative">
-          <!-- Decorative frame -->
-          <div class="absolute -inset-3 border border-accent/20 rounded-2xl"></div>
-          <div class="absolute -inset-6 border border-teal/10 rounded-3xl"></div>
-
-          <!-- Photo placeholder — replace src with your actual photo -->
-          <div class="w-64 h-80 md:w-80 md:h-96 rounded-xl overflow-hidden bg-panel border border-border relative">
-            <img
-              src="/photo.jpg"
-              alt="Lucas Calbó"
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
-            <!-- Fallback if no photo yet -->
-            <div class="absolute inset-0 hidden items-center justify-center flex-col gap-2">
-              <span class="font-display text-6xl text-accent">LC</span>
-              <span class="font-mono text-xs text-muted">photo.jpg</span>
-            </div>
-
-            <!-- Overlay gradient -->
-            <div class="absolute bottom-0 left-0 right-0 h-1/3
-                        bg-gradient-to-t from-bg/80 to-transparent"></div>
-
-            <!-- Status badge -->
-            <div class="absolute bottom-4 left-4 right-4">
-              <div class="bg-surface/90 backdrop-blur border border-border rounded-lg px-3 py-2
-                          flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full bg-teal animate-pulse"></div>
-                <span class="font-mono text-xs text-muted">Available for opportunities</span>
-              </div>
-            </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2.5rem;">
+            <span style="width: 2rem; height: 1px; background: var(--color-accent);"></span>
+            <span class="label-accent">Available for new opportunities</span>
           </div>
 
-          <!-- Corner accent -->
-          <div class="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-accent"></div>
-          <div class="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-teal"></div>
-        </div>
-      </div>
-    </div>
+          <h1 style="
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            line-height: 1.05;
+            color: var(--color-ink);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.75rem;
+          ">
+            Lucas<br/>
+            <span style="font-style: italic;">Calbó</span>
+          </h1>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-      <span class="font-mono text-xs text-muted/50 uppercase tracking-widest">scroll</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-muted/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-      </svg>
+          <p style="
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--color-ink-2);
+            line-height: 1.7;
+            max-width: 38ch;
+            margin-bottom: 2.5rem;
+          ">
+            Senior software engineer specializing in
+            <strong style="font-weight: 500; color: var(--color-ink);">C++ systems</strong>
+            and high-performance applications.
+            Currently expanding into
+            <strong style="font-weight: 500; color: var(--color-accent);">AWS cloud architecture</strong>,
+            pursuing the Solutions Architect Associate certification.
+            Based in Madrid, Spain.
+          </p>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem;">
+            <a href="#experience" class="btn-primary">View experience</a>
+            <a href="mailto:lucascalbo@gmail.com" class="btn-ghost">lucascalbo@gmail.com</a>
+          </div>
+
+          <!-- Metrics row -->
+          <div style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid var(--color-border);
+            border-radius: 3px;
+            overflow: hidden;
+          ">
+            {[
+              { n: '9+',  label: 'Years of\nexperience' },
+              { n: '15+', label: 'Simulators\ndelivered'  },
+              { n: '2',   label: 'Games\nshipped'         },
+            ].map((stat, i) => (
+              <div style={`
+                padding: 1.25rem 1rem;
+                text-align: center;
+                ${i < 2 ? 'border-right: 1px solid var(--color-border);' : ''}
+              `}>
+                <div style="font-family: var(--font-display); font-size: 2rem; color: var(--color-accent); line-height: 1;">
+                  {stat.n}
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.35rem; white-space: pre-line; line-height: 1.4;">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <!-- Right: Photo -->
+        <div style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          animation: fadeIn 0.8s ease both;
+          animation-delay: 0.3s;
+        " class="hidden md:flex">
+          <div style="position: relative;">
+
+            <!-- Photo frame -->
+            <div style="
+              width: 22rem;
+              height: 28rem;
+              border: 1px solid var(--color-border);
+              border-radius: 3px;
+              overflow: hidden;
+              background: var(--color-panel);
+              position: relative;
+            ">
+              <img
+                src="/photo.jpg"
+                alt="Lucas Calbó"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: top;"
+                onerror="this.style.display='none'; document.getElementById('photo-fallback').style.display='flex';"
+              />
+              <!-- Fallback -->
+              <div id="photo-fallback" style="
+                display: none;
+                position: absolute; inset: 0;
+                align-items: center; justify-content: center;
+                flex-direction: column; gap: 0.5rem;
+                background: var(--color-panel);
+              ">
+                <span style="font-family: var(--font-display); font-size: 4rem; color: var(--color-border-strong);">LC</span>
+                <span class="label">photo.jpg → /public/photo.jpg</span>
+              </div>
+            </div>
+
+            <!-- Info card overlapping bottom -->
+            <div style="
+              position: absolute;
+              bottom: -1.5rem;
+              left: -1.5rem;
+              background: var(--color-surface);
+              border: 1px solid var(--color-border);
+              border-radius: 3px;
+              padding: 1rem 1.25rem;
+              box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            ">
+              <div style="font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; color: var(--color-ink); margin-bottom: 0.25rem;">
+                Madrid, Spain
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+                +34 655 58 74 66
+              </div>
+            </div>
+
+            <!-- Decorative dot grid (top-right) -->
+            <div style="
+              position: absolute;
+              top: -2rem;
+              right: -2rem;
+              width: 5rem;
+              height: 5rem;
+              background-image: radial-gradient(var(--color-border-strong) 1px, transparent 1px);
+              background-size: 8px 8px;
+              opacity: 0.6;
+            "></div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
+
+  <!-- ══════════════════════════════════════
        EXPERIENCE
-  ══════════════════════════════════════════ -->
-  <section id="experience" class="py-32 max-w-6xl mx-auto px-6">
-    <div class="mb-16">
-      <div class="section-label mb-4">02 / Experience</div>
-      <h2 class="section-title">WORK<br/><span class="text-accent">HISTORY</span></h2>
-      <div class="accent-line mt-6 max-w-xs"></div>
-    </div>
+  ══════════════════════════════════════ -->
+  <section id="experience" style="padding: 7rem 0; border-bottom: 1px solid var(--color-border);">
+    <div class="max-w-6xl mx-auto px-8">
 
-    <div class="relative">
-      <!-- Timeline line -->
-      <div class="absolute left-0 top-0 bottom-0 w-px bg-border hidden md:block ml-6"></div>
+      <!-- Section header -->
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin-bottom: 4rem;" class="grid-cols-1 md:grid-cols-3">
+        <div>
+          <div class="label" style="margin-bottom: 0.75rem;">01 / Experience</div>
+          <div class="rule-accent"></div>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.75rem); color: var(--color-ink); line-height: 1; letter-spacing: -0.02em;">
+            Work History
+          </h2>
+        </div>
+      </div>
 
-      <div class="space-y-8">
+      <!-- Timeline -->
+      <div style="display: flex; flex-direction: column; gap: 0;">
         {experience.map((job, i) => (
-          <div class="relative md:pl-20 group">
-
-            <!-- Timeline dot -->
-            <div class={`hidden md:flex absolute left-0 top-6 w-12 h-12 rounded-full
-                         border-2 items-center justify-center z-10
-                         bg-panel transition-colors duration-300
-                         ${job.accent === 'accent' ? 'border-accent/50 group-hover:border-accent' : 'border-teal/50 group-hover:border-teal'}`}>
-              <span class={`font-display text-lg ${job.accent === 'accent' ? 'text-accent' : 'text-teal'}`}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
+          <div style={`
+            display: grid;
+            grid-template-columns: 12rem 1fr;
+            gap: 3rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--color-border);
+            ${i === experience.length - 1 ? 'border-bottom: 1px solid var(--color-border);' : ''}
+            transition: background 0.2s ease;
+          `}
+          class="experience-row grid-cols-1 md:grid-cols-exp"
+          onmouseover="this.style.background='var(--color-surface)'; this.style.marginLeft='-2rem'; this.style.paddingLeft='2rem'; this.style.marginRight='-2rem'; this.style.paddingRight='2rem';"
+          onmouseout="this.style.background='transparent'; this.style.marginLeft='0'; this.style.paddingLeft='0'; this.style.marginRight='0'; this.style.paddingRight='0';"
+          >
+            <!-- Left: meta -->
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-accent); letter-spacing: 0.06em; margin-bottom: 0.35rem;">
+                {job.period}
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.04em;">
+                {job.location}
+              </div>
             </div>
 
-            <div class="card group-hover:bg-surface/50">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-                <div>
-                  <h3 class="font-display text-2xl text-text">{job.company}</h3>
-                  <p class={`font-mono text-sm ${job.accent === 'accent' ? 'text-accent' : 'text-teal'}`}>
-                    {job.role}
-                  </p>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="font-mono text-xs text-muted">{job.period}</div>
-                  <div class="font-mono text-xs text-muted/60">{job.location}</div>
-                </div>
+            <!-- Right: content -->
+            <div>
+              <div style="margin-bottom: 0.25rem;">
+                <h3 style="font-family: var(--font-body); font-size: 1.125rem; font-weight: 500; color: var(--color-ink);">
+                  {job.company}
+                </h3>
               </div>
-
-              <p class="text-muted text-sm leading-relaxed mb-4">{job.description}</p>
-
-              <div class="flex flex-wrap gap-2">
-                {job.tags.map(tag => <span class="tag">{tag}</span>)}
+              <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-accent); letter-spacing: 0.04em; margin-bottom: 1rem;">
+                {job.role}
+              </div>
+              <p style="font-family: var(--font-body); font-size: 0.9375rem; font-weight: 400; color: var(--color-ink-2); line-height: 1.7; margin-bottom: 1.25rem; max-width: 60ch;">
+                {job.description}
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {job.tags.map(t => <span class="tag">{t}</span>)}
               </div>
             </div>
           </div>
         ))}
       </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
+
+  <!-- ══════════════════════════════════════
        SKILLS
-  ══════════════════════════════════════════ -->
-  <section id="skills" class="py-32 bg-surface/30 border-y border-border">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="mb-16">
-        <div class="section-label mb-4">03 / Skills</div>
-        <h2 class="section-title">TECH<br/><span class="text-accent">STACK</span></h2>
-        <div class="accent-line mt-6 max-w-xs"></div>
+  ══════════════════════════════════════ -->
+  <section id="skills" style="padding: 7rem 0; border-bottom: 1px solid var(--color-border);">
+    <div class="max-w-6xl mx-auto px-8">
+
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin-bottom: 4rem;" class="grid-cols-1 md:grid-cols-3">
+        <div>
+          <div class="label" style="margin-bottom: 0.75rem;">02 / Skills</div>
+          <div class="rule-accent"></div>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.75rem); color: var(--color-ink); line-height: 1; letter-spacing: -0.02em;">
+            Technical Stack
+          </h2>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Object.entries(skills).map(([category, items]) => (
-          <div class="card">
-            <div class="font-mono text-xs text-accent uppercase tracking-widest mb-4">
-              {category}
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        {skillGroups.map((group, i) => (
+          <div style={`
+            display: grid;
+            grid-template-columns: 12rem 1fr;
+            gap: 3rem;
+            padding: 1.75rem 0;
+            border-top: 1px solid var(--color-border);
+            ${i === skillGroups.length - 1 ? 'border-bottom: 1px solid var(--color-border);' : ''}
+            align-items: center;
+          `}>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.08em; text-transform: uppercase;">
+              {group.label}
             </div>
-            <div class="flex flex-wrap gap-2">
-              {items.map(skill => (
-                <span class="font-mono text-sm px-3 py-1.5 rounded bg-bg border border-border
-                             text-text hover:border-accent/50 hover:text-accent
-                             transition-colors duration-200 cursor-default">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+              {group.items.map(skill => (
+                <span style="
+                  font-family: var(--font-mono);
+                  font-size: 0.875rem;
+                  padding: 0.375rem 0.875rem;
+                  border: 1px solid var(--color-border);
+                  border-radius: 2px;
+                  color: var(--color-ink-2);
+                  background: var(--color-surface);
+                  transition: border-color 0.15s, color 0.15s;
+                  cursor: default;
+                "
+                onmouseover="this.style.borderColor='var(--color-accent)'; this.style.color='var(--color-accent)';"
+                onmouseout="this.style.borderColor='var(--color-border)'; this.style.color='var(--color-ink-2)';"
+                >
                   {skill}
                 </span>
               ))}
@@ -236,104 +348,185 @@ const skills = {
           </div>
         ))}
       </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       AWS ARCHITECTURE (bonus section)
-  ══════════════════════════════════════════ -->
-  <section class="py-32 max-w-6xl mx-auto px-6">
-    <div class="mb-16">
-      <div class="section-label mb-4">04 / AWS Architecture</div>
-      <h2 class="section-title">THIS SITE<br/><span class="text-teal">ON AWS</span></h2>
-      <div class="accent-line mt-6 max-w-xs"></div>
-    </div>
 
-    <div class="card">
-      <p class="text-muted text-sm mb-6">
-        This portfolio is deployed on AWS as a hands-on demonstration of cloud architecture.
-        Studying for the <span class="text-teal">AWS Certified Solutions Architect – Associate (SAA-C03)</span>.
-      </p>
+  <!-- ══════════════════════════════════════
+       AWS ARCHITECTURE
+  ══════════════════════════════════════ -->
+  <section id="aws" style="padding: 7rem 0; border-bottom: 1px solid var(--color-border);">
+    <div class="max-w-6xl mx-auto px-8">
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[
-          { service: 'Route 53',   desc: 'DNS & Domain',        icon: '🌐', color: 'accent' },
-          { service: 'CloudFront', desc: 'CDN & Edge Delivery', icon: '⚡', color: 'teal'   },
-          { service: 'S3',         desc: 'Static Site Hosting', icon: '🪣', color: 'accent' },
-          { service: 'Lambda',     desc: 'CV PDF Generation',   icon: 'λ',  color: 'teal'   },
-          { service: 'API Gateway',desc: 'REST Endpoints',      icon: '🔀', color: 'accent' },
-          { service: 'IAM',        desc: 'Permissions & Roles', icon: '🔐', color: 'teal'   },
-          { service: 'CloudWatch', desc: 'Monitoring & Logs',   icon: '📊', color: 'accent' },
-          { service: 'CDK',        desc: 'Infrastructure as Code', icon: '⚙️', color: 'teal' },
-        ].map(item => (
-          <div class={`p-4 rounded-lg bg-bg border transition-colors duration-200 cursor-default
-                       ${item.color === 'accent' ? 'border-accent/20 hover:border-accent/50' : 'border-teal/20 hover:border-teal/50'}`}>
-            <div class="text-2xl mb-2">{item.icon}</div>
-            <div class={`font-mono text-xs font-medium mb-1 ${item.color === 'accent' ? 'text-accent' : 'text-teal'}`}>
-              {item.service}
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin-bottom: 4rem;" class="grid-cols-1 md:grid-cols-3">
+        <div>
+          <div class="label" style="margin-bottom: 0.75rem;">03 / AWS</div>
+          <div class="rule-accent"></div>
+        </div>
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.75rem); color: var(--color-ink); line-height: 1; letter-spacing: -0.02em; margin-bottom: 1rem;">
+            Cloud Architecture
+          </h2>
+          <p style="font-family: var(--font-body); font-size: 0.9375rem; font-weight: 400; color: var(--color-ink-2); line-height: 1.7; max-width: 55ch;">
+            This site is deployed on AWS as a practical demonstration of cloud architecture patterns.
+            Studying for the <span style="font-family: var(--font-mono); color: var(--color-accent); font-size: 0.875rem;">SAA-C03</span> certification.
+          </p>
+        </div>
+      </div>
+
+      <!-- Architecture diagram text-based -->
+      <div style="
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 3px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        color: var(--color-ink-2);
+        line-height: 2;
+        overflow-x: auto;
+      ">
+        <pre style="margin: 0; font-family: inherit; color: inherit; white-space: pre;">{`  Route 53 (DNS)
+       │
+       ▼
+  CloudFront (CDN / Edge)
+       │
+  ┌────┴────────────────┐
+  │                     │
+  ▼                     ▼
+S3 Static Site      API Gateway
+(Astro build)           │
+                        ▼
+                     Lambda
+                    (PDF gen)
+                        │
+                        ▼
+                     S3 (PDFs)
+
+  IAM → Permissions for all services
+  CloudWatch → Logs & monitoring
+  CDK → Infrastructure as Code`}</pre>
+      </div>
+
+      <!-- Services grid -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: 3px; overflow: hidden;"
+           class="grid-cols-2 md:grid-cols-4">
+        {awsServices.map(svc => (
+          <div style="
+            background: var(--color-surface);
+            padding: 1.5rem 1.25rem;
+            transition: background 0.15s;
+          "
+          onmouseover="this.style.background='var(--color-bg)'"
+          onmouseout="this.style.background='var(--color-surface)'"
+          >
+            <div style={`font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: ${svc.color}; margin-bottom: 0.5rem;`}>
+              {svc.name}
             </div>
-            <div class="font-body text-xs text-muted">{item.desc}</div>
+            <div style="font-family: var(--font-body); font-size: 0.875rem; font-weight: 400; color: var(--color-muted); line-height: 1.5;">
+              {svc.role}
+            </div>
           </div>
         ))}
       </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
+
+  <!-- ══════════════════════════════════════
        EDUCATION
-  ══════════════════════════════════════════ -->
-  <section class="py-32 bg-surface/30 border-y border-border">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="mb-16">
-        <div class="section-label mb-4">05 / Education</div>
-        <h2 class="section-title">FORMA<br/><span class="text-accent">CIÓN</span></h2>
-        <div class="accent-line mt-6 max-w-xs"></div>
+  ══════════════════════════════════════ -->
+  <section style="padding: 7rem 0; border-bottom: 1px solid var(--color-border);">
+    <div class="max-w-6xl mx-auto px-8">
+
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin-bottom: 4rem;" class="grid-cols-1 md:grid-cols-3">
+        <div>
+          <div class="label" style="margin-bottom: 0.75rem;">04 / Education</div>
+          <div class="rule-accent"></div>
+        </div>
+        <div style="display: flex; align-items: flex-end;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.75rem); color: var(--color-ink); line-height: 1; letter-spacing: -0.02em;">
+            Academic Background
+          </h2>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div style="display: flex; flex-direction: column; gap: 0;">
         {[
-          {
-            institution: 'Universidad Francisco de Vitoria',
-            degree: "Bachelor's Degree in Videogame Development",
-            period: '2015 – 2019',
-          },
-          {
-            institution: 'María de Zayas',
-            degree: 'Technical Degree in Applications Development',
-            period: '2010 – 2012',
-          },
-        ].map(edu => (
-          <div class="card">
-            <div class="font-mono text-xs text-accent mb-2">{edu.period}</div>
-            <h3 class="font-display text-xl text-text mb-1">{edu.institution}</h3>
-            <p class="text-muted text-sm">{edu.degree}</p>
+          { institution: 'Universidad Francisco de Vitoria', degree: "Bachelor's Degree in Videogame Development", period: '2015 – 2019' },
+          { institution: 'María de Zayas', degree: 'Technical Degree in Application Development (DAM)', period: '2010 – 2012' },
+          { institution: 'AWS — In Progress', degree: 'Solutions Architect Associate (SAA-C03)', period: '2025' },
+        ].map((edu, i) => (
+          <div style={`
+            display: grid;
+            grid-template-columns: 12rem 1fr;
+            gap: 3rem;
+            padding: 1.75rem 0;
+            border-top: 1px solid var(--color-border);
+            ${i === 2 ? 'border-bottom: 1px solid var(--color-border);' : ''}
+            align-items: center;
+          `}>
+            <div style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-muted); letter-spacing: 0.04em;">
+              {edu.period}
+            </div>
+            <div>
+              <div style="font-family: var(--font-body); font-size: 1.0625rem; font-weight: 500; color: var(--color-ink); margin-bottom: 0.25rem;">
+                {edu.institution}
+              </div>
+              <div style="font-family: var(--font-body); font-size: 0.9375rem; font-weight: 400; color: var(--color-ink-2);">
+                {edu.degree}
+              </div>
+            </div>
           </div>
         ))}
       </div>
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       CONTACT CTA
-  ══════════════════════════════════════════ -->
-  <section class="py-32 max-w-6xl mx-auto px-6 text-center">
-    <div class="section-label mb-6 flex justify-center">06 / Contact</div>
-    <h2 class="font-display text-6xl md:text-8xl text-text mb-4">
-      LET'S <span class="text-accent">TALK</span>
-    </h2>
-    <p class="text-muted font-body max-w-md mx-auto mb-10 text-sm leading-relaxed">
-      Open to new opportunities, collaborations, and interesting engineering challenges.
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="mailto:lucascalbo@gmail.com" class="btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-        lucascalbo@gmail.com
-      </a>
-      <a href="tel:+34655587466" class="btn-ghost">
-        +34 655 58 74 66
-      </a>
+
+  <!-- ══════════════════════════════════════
+       CONTACT
+  ══════════════════════════════════════ -->
+  <section style="padding: 8rem 0;">
+    <div class="max-w-6xl mx-auto px-8" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;" class="grid-cols-1 md:grid-cols-2">
+
+      <div>
+        <div class="label" style="margin-bottom: 0.75rem;">05 / Contact</div>
+        <div class="rule-accent" style="margin-bottom: 2rem;"></div>
+        <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--color-ink); line-height: 1; letter-spacing: -0.02em; margin-bottom: 1.5rem;">
+          Let's work<br/>
+          <span style="font-style: italic;">together.</span>
+        </h2>
+        <p style="font-family: var(--font-body); font-size: 0.9375rem; font-weight: 400; color: var(--color-ink-2); line-height: 1.7; max-width: 38ch;">
+          Open to senior engineering roles, cloud architecture positions, and technically challenging projects. Available immediately.
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <a href="mailto:lucascalbo@gmail.com" class="btn-primary" style="justify-content: space-between; padding: 1.25rem 1.5rem;">
+          <span>lucascalbo@gmail.com</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="tel:+34655587466" class="btn-ghost" style="justify-content: space-between; padding: 1.25rem 1.5rem;">
+          <span>+34 655 58 74 66</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </a>
+        <a href="/cv" class="btn-ghost" style="justify-content: space-between; padding: 1.25rem 1.5rem;">
+          <span>Download CV (PDF)</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+        </a>
+      </div>
+
     </div>
   </section>
 
